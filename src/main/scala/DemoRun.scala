@@ -43,7 +43,9 @@ object RunIt extends App {
   def snakeTagsCasing(): Unit = {
     import SnakeTagsConversions._
     import Values._
-    println(s"snake_case conversion: ${Json.toJson(classTwo)}")
+    val serialized = Json.toJson(classTwo)
+    println(s"snake_case conversion: $serialized")
+    println(s"snake_case conversion identity: ${Json.parse(serialized.toString()).as[DemoClass] == classTwo}")
   }
 
   def currentSnakeCasing(): Unit = {
@@ -54,4 +56,5 @@ object RunIt extends App {
 
   currentSnakeCasing()
   snakeTagsCasing()
+
 }
