@@ -44,14 +44,14 @@ object RunIt extends App {
     import SnakeTagsConversions._
     import Values._
     val serialized = Json.toJson(classTwo)
-    println(s"snake_case conversion: $serialized")
+    println(s"snake_case conversion: ${Json.prettyPrint(serialized)}")
     println(s"snake_case conversion identity: ${Json.parse(serialized.toString()).as[DemoClass] == classTwo}")
   }
 
   def currentSnakeCasing(): Unit = {
     import CurrentConversions._
     import Values._
-    println(s"Current conversion: ${Json.toJson(classTwo)}")
+    println(s"Current conversion: ${Json.prettyPrint(Json.toJson(classTwo))}")
   }
 
   currentSnakeCasing()
